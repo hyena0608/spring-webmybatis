@@ -7,9 +7,9 @@
             resultType="com.wizard.pracmybatis.domain.Board">
         SELECT B.BOARD_SEQ,
                B.TITLE,
-               B.COMTENTS,
+               B.CONTENTS,
                B.REG_DATE
-        FROM T_BOARD B
+        FROM BOARD B
         ORDER BY B.REG_DATE DESC
     </select>
 
@@ -17,14 +17,14 @@
             resultType="com.wizard.pracmybatis.domain.Board">
         SELECT B.BOARD_SEQ,
                B.TITLE,
-               B.COMTENTS,
+               B.CONTENTS,
                B.REG_DATE
-        FROM T_BOARD B
+        FROM BOARD B
         WHERE B.BOARD_SEQ = #{boardSeq}
     </select>
 
     <insert id="save" parameterType="com.wizard.pracmybatis.domain.Board">
-        INSERT INTO T_BOARD
+        INSERT INTO BOARD
         (TITLE,
          CONTENTS,
          REG_DATE)
@@ -34,19 +34,14 @@
     </insert>
 
     <update id="update" parameterType="com.wizard.pracmybatis.domain.Board">
-        UPDATE T_BOARD
-        SET
-            TITLE = #{title},
+        UPDATE BOARD
+        SET TITLE    = #{title},
             CONTENTS = #{conten}
     </update>
 
-    <select id="get" parameterType="int"
-            resultType="com.wizard.pracmybatis.domain.Board">
-        SELECT B.BOARD_SEQ,
-               B.TITLE,
-               B.COMTENTS,
-               B.REG_DATE
-        FROM T_BOARD B
-        WHERE B.BOARD_SEQ = #{boardSeq}
-    </select>
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM BOARD
+        WHERE BOARD_SEQ = #{boardSeq}
+    </delete>
 </mapper>
