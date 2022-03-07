@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wizard.pracmybatis.repository.EmployeeRepository">
+
+    <select id="getList" resultType="Employee">
+        SELECT E.ID,
+               E.EMPLOYEE_NAME,
+               E.EMPLOYEE_ADDRESS,
+               E.COMPANY_ID
+        FROM EMPLOYEE E
+        ORDER BY E.ID
+    </select>
+
+    <select id="get" parameterType="int"
+            resultType="Employee">
+        SELECT E.ID,
+               E.EMPLOYEE_NAME,
+               E.EMPLOYEE_ADDRESS,
+               E.COMPANY_ID
+        FROM EMPLOYEE E
+        WHERE E.ID = #{e_id}
+    </select>
+
+    <insert id="save" parameterType="Employee">
+        INSERT INTO EMPLOYEE (EMPLOYEE_NAME, EMPLOYEE_ADDRESS, COMPANY_ID)
+        VALUES (#{EMPLOYEE_NAME}, #{EMPLOYEE_ADDRESS}, #{COMPANY_ID})
+    </insert>
+
+    <update id="update" parameterType="Employee">
+        UPDATE EMPLOYEE
+        SET EMPLOYEE_NAME = #{name},
+            ADDRESS       = #{address}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM EMPLOYEE
+        WHERE ID = #{e_id}
+    </delete>
+
+    <select id="getEmployeeCompanyList" resultType="EmployeeCompanyDto">
+        SELECT E.EMPLOYEE_NAME,
+               E.EMPLOYEE_ADDRESS,
+               C.ID,
+               C.COMPANY_NAME,
+               C.COMPANY_ADDRESS
+        FROM EMPLOYEE E,
+             COMPANY C
+        WHERE E.COMPANY_ID = C.ID
+    </select>
+</mapper>

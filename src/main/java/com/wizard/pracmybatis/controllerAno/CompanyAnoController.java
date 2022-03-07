@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class CompanyController {
+public class CompanyAnoController {
 
     private final CompanyMapper companyMapper;
 

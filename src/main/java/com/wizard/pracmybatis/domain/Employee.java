@@ -1,18 +1,23 @@
 package com.wizard.pracmybatis.domain;
 
+import lombok.Data;
 import lombok.Getter;
 
-@Getter
+@Data
 public class Employee {
 
       private int id;
-      private String name;
-      private String address;
-      private int company_id;
+      private String EMPLOYEE_NAME;
+      private String EMPLOYEE_ADDRESS;
+      private int COMPANY_ID;
 
-      public Employee(String name, String address, int company_id) {
-            this.name = name;
-            this.address = address;
-            this.company_id = company_id;
+      private Employee() {
+      }
+
+      public Employee(int id, String EMPLOYEE_NAME, String EMPLOYEE_ADDRESS, int COMPANY_ID) {
+            this.id = id;
+            this.EMPLOYEE_NAME = EMPLOYEE_NAME;
+            this.EMPLOYEE_ADDRESS = EMPLOYEE_ADDRESS;
+            this.COMPANY_ID = COMPANY_ID;
       }
 }

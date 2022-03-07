@@ -15,7 +15,7 @@ import static com.wizard.pracmybatis.repository.EmployeeMapper.*;
 
 @RestController
 @RequiredArgsConstructor
-public class EmployeeController {
+public class EmployeeAnoController {
 
     private final EmployeeMapper employeeMapper;
 

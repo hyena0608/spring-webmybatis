@@ -3,9 +3,9 @@
 
 <mapper namespace="com.wizard.pracmybatis.repository.BoardRepository">
 
-    <select id="getList" parameterType="com.wizard.pracmybatis.domain.Board"
-            resultType="com.wizard.pracmybatis.domain.Board">
-        SELECT B.BOARD_SEQ,
+    <select id="getList" parameterType="Board"
+            resultType="Board">
+        SELECT B.ID,
                B.TITLE,
                B.CONTENTS,
                B.REG_DATE
@@ -14,16 +14,16 @@
     </select>
 
     <select id="get" parameterType="int"
-            resultType="com.wizard.pracmybatis.domain.Board">
-        SELECT B.BOARD_SEQ,
+            resultType="Board">
+        SELECT B.ID,
                B.TITLE,
                B.CONTENTS,
                B.REG_DATE
         FROM BOARD B
-        WHERE B.BOARD_SEQ = #{boardSeq}
+        WHERE B.ID = #{boardSeq}
     </select>
 
-    <insert id="save" parameterType="com.wizard.pracmybatis.domain.Board">
+    <insert id="save" parameterType="Board">
         INSERT INTO BOARD
         (TITLE,
          CONTENTS,
@@ -33,15 +33,15 @@
                 NOW())
     </insert>
 
-    <update id="update" parameterType="com.wizard.pracmybatis.domain.Board">
+    <update id="update" parameterType="Board">
         UPDATE BOARD
         SET TITLE    = #{title},
-            CONTENTS = #{conten}
+            CONTENTS = #{content}
     </update>
 
     <delete id="delete" parameterType="int">
         DELETE
         FROM BOARD
-        WHERE BOARD_SEQ = #{boardSeq}
+        WHERE ID = #{boardSeq}
     </delete>
 </mapper>

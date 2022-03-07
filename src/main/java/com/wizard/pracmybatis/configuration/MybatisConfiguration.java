@@ -17,10 +17,12 @@ public class MybatisConfiguration {
 
     @Bean
     public SqlSessionFactory sqlSessionFactory(@Autowired DataSource dataSource, ApplicationContext applicationContext) throws Exception {
-        SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
-        factory.setDataSource(dataSource);
-        factory.setMapperLocations(applicationContext.getResources("classpath:mybatis/sql/*.xml"));
-        return factory.getObject();
+        SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
+        factoryBean.setDataSource(dataSource);
+
+        factoryBean.setMapperLocations(applicationContext.getResources("classpath:mybatis/sql/*.xml"));
+        factoryBean.setConfigLocation(applicationContext.getResource("classpath:/mybatis/config/mybatis-config.xml"));
+        return factoryBean.getObject();
     }
 
     @Bean

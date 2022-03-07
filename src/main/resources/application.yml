@@ -19,8 +19,6 @@ spring:
 logging:
   level:
     com:
-      example:
-        prac2:
-          mapper:
-            CompanyMapper=DEBUG:
-
+      wizard:
+        pracmybatis:
+          repository: DEBUG
