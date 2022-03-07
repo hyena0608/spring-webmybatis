@@ -4,49 +4,51 @@
 <mapper namespace="com.wizard.pracmybatis.repository.EmployeeRepository">
 
     <select id="getList" resultType="Employee">
-        SELECT E.ID,
-               E.EMPLOYEE_NAME,
-               E.EMPLOYEE_ADDRESS,
-               E.COMPANY_ID
-        FROM EMPLOYEE E
-        ORDER BY E.ID
+        SELECT E.id,
+               E.employee_name,
+               E.employee_address,
+               E.company_id
+        FROM employee E
+        ORDER BY E.id
     </select>
 
     <select id="get" parameterType="int"
             resultType="Employee">
         SELECT E.ID,
-               E.EMPLOYEE_NAME,
-               E.EMPLOYEE_ADDRESS,
-               E.COMPANY_ID
-        FROM EMPLOYEE E
+               E.employee_name,
+               E.emplotee_address,
+               E.company_id
+        FROM employee E
         WHERE E.ID = #{e_id}
     </select>
 
     <insert id="save" parameterType="Employee">
-        INSERT INTO EMPLOYEE (EMPLOYEE_NAME, EMPLOYEE_ADDRESS, COMPANY_ID)
-        VALUES (#{EMPLOYEE_NAME}, #{EMPLOYEE_ADDRESS}, #{COMPANY_ID})
+        INSERT INTO employee (employee_name, employee_address, company_id)
+        VALUES (#{employee_name}, #{employee_address}, #{company_id})
     </insert>
 
     <update id="update" parameterType="Employee">
-        UPDATE EMPLOYEE
-        SET EMPLOYEE_NAME = #{name},
-            ADDRESS       = #{address}
+        UPDATE employee
+        SET employee_name = #{employee_name},
+            address       = #{employee_address},
+            company_id = #{company_id}
+        WHERE id = #{e_id}
     </update>
 
     <delete id="delete" parameterType="int">
         DELETE
-        FROM EMPLOYEE
+        FROM employee
         WHERE ID = #{e_id}
     </delete>
 
     <select id="getEmployeeCompanyList" resultType="EmployeeCompanyDto">
-        SELECT E.EMPLOYEE_NAME,
-               E.EMPLOYEE_ADDRESS,
-               C.ID,
-               C.COMPANY_NAME,
-               C.COMPANY_ADDRESS
-        FROM EMPLOYEE E,
-             COMPANY C
-        WHERE E.COMPANY_ID = C.ID
+        SELECT E.employee_name,
+               E.employee_address,
+               C.id,
+               C.company_name,
+               C.company_address
+        FROM employee E,
+             company C
+        WHERE E.company_id = C.id
     </select>
 </mapper>

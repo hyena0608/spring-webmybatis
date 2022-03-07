@@ -30,6 +30,11 @@ public class EmployeeController {
         employeeService.save(employee);
     }
 
+    @PatchMapping("/update/{e_id}")
+    public void save(@PathVariable int e_id, @RequestBody Employee employee) {
+        employeeService.update(employee);
+    }
+
     @GetMapping("/delete/{e_id}")
     public void delete(@PathVariable int e_id) {
         employeeService.delete(e_id);
