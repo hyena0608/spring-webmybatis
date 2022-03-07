@@ -1,11 +1,26 @@
+#spring:
+#  datasource:
+#    jdbc-url: jdbc:h2:tcp://localhost/~/spring-webmybatis
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+
+#jpa:
+#  hibernate:
+#    ddl-auto: create
+#  show-sql: true
+
 spring:
   datasource:
-    jdbc-url: jdbc:h2:tcp://localhost/~/spring-webmybatis
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+    jdbc-url: jdbc:postgresql://localhost:5432/testdb?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul
+    username: postgres
+    password: root
 
-jpa:
-  hibernate:
-    ddl-auto: create
-  show-sql: true
+logging:
+  level:
+    com:
+      example:
+        prac2:
+          mapper:
+            CompanyMapper=DEBUG:
+
