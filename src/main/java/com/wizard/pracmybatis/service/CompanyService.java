@@ -23,8 +23,8 @@ public class CompanyService {
         return companyRepository.get(id);
     }
 
-    public void save(Company company) {
-        companyRepository.save(company);
+    public int save(Company company) {
+         return companyRepository.save(company);
     }
 
     public void update(Company company) {

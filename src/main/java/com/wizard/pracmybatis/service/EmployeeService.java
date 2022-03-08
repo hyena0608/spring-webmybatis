@@ -1,6 +1,7 @@
 package com.wizard.pracmybatis.service;
 
 import com.wizard.pracmybatis.domain.Employee;
+import com.wizard.pracmybatis.dto.EmpComDepDto;
 import com.wizard.pracmybatis.dto.EmployeeCompanyDto;
 import com.wizard.pracmybatis.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
@@ -36,5 +37,9 @@ public class EmployeeService {
 
     public List<EmployeeCompanyDto> getEmployeeCompanyList() {
         return employeeRepository.getEmployeeCompanyList();
+    }
+
+    public List<EmpComDepDto> getEmpComDepList() {
+        return employeeRepository.getEmpComDepList();
     }
 }

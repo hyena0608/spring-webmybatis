@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wizard.pracmybatis.repository.DepartmentRepository">
+
+    <select id="getList" resultType="Department">
+        SELECT d.id,
+               d.name,
+               d.address,
+               d.intro,
+               d.company_id,
+        FROM department d
+        ORDER BY d.id
+    </select>
+
+    <select id="get" parameterType="int"
+            resultType="Department">
+        SELECT d.id,
+               d.name,
+               d.address,
+               d.intro,
+               d.company_id,
+        FROM department d
+        WHERE d.id = #{id}
+    </select>
+
+    <insert id="save" parameterType="Department" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO department (name, address, intro, company_id)
+        VALUES (#{name}, #{address}, #{intro}, #{company_id})
+        RETURNING id;
+    </insert>
+
+    <update id="update" parameterType="Department">
+        UPDATE department
+        SET name          = #{name},
+            address       = #{address},
+            intro         = #{intro},
+            company_id    = #{company_id},
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM department
+        WHERE ID = #{id}
+    </delete>
+
+</mapper>

@@ -19,16 +19,17 @@
         WHERE c.id = #{id}
     </select>
 
-    <insert id="save" parameterType="Company">
+    <insert id="save" parameterType="Company" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO company (name, address)
         VALUES (#{name}, #{address})
+        RETURNING id;
     </insert>
 
     <update id="update" parameterType="Company">
         UPDATE company
-        SET name       = #{name},
-            address    = #{address},
-        WHERE id = #{id}
+        SET name    = #{name},
+            address = #{address},
+            WHERE id = #{id}
     </update>
 
     <delete id="delete" parameterType="int">

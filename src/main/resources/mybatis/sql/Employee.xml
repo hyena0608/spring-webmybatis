@@ -7,7 +7,8 @@
         SELECT E.id,
                E.name,
                E.address,
-               E.company_id
+               E.company_id,
+               E.department_id
         FROM employee E
         ORDER BY E.id
     </select>
@@ -17,21 +18,24 @@
         SELECT E.id,
                E.name,
                E.address,
-               E.company_id
+               E.company_id,
+               E.department_id
         FROM employee E
         WHERE E.ID = #{e_id}
     </select>
 
-    <insert id="save" parameterType="Employee">
-        INSERT INTO employee (name, address, company_id)
-        VALUES (#{name}, #{address}, #{company_id})
+    <insert id="save" parameterType="Employee" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO employee (name, address, company_id, department_id)
+        VALUES (#{name}, #{address}, #{company_id}, #{department_id})
+        RETURNING id;
     </insert>
 
     <update id="update" parameterType="Employee">
         UPDATE employee
         SET name = #{name},
             address       = #{address},
-            company_id = #{company_id}
+            company_id = #{company_id},
+            department_id = #{department_id}
         WHERE id = #{e_id}
     </update>
 
@@ -42,13 +46,29 @@
     </delete>
 
     <select id="getEmployeeCompanyList" resultType="EmployeeCompanyDto">
-        SELECT E.name,
-               E.address,
-               C.id,
-               C.name,
-               C.address
+        SELECT E.name e_name,
+               E.address e_address,
+               C.id c_id,
+               C.name c_name,
+               C.address c_address
         FROM employee E,
              company C
         WHERE E.company_id = C.id
     </select>
+
+    <select id="getEmpComDepList" resultType="EmpComDepDto">
+        SELECT e.name e_name,
+               e.address e_address,
+               c.id c_id,
+               c.name c_name,
+               c.address c_address,
+               d.id d_id,
+               d.name d_name,
+               d.address d_address,
+               d.intro d_intro
+        FROM employee e
+        JOIN company c ON e.company_id = c.id
+        JOIN department d ON e.department_id = d.id
+    </select>
+
 </mapper>

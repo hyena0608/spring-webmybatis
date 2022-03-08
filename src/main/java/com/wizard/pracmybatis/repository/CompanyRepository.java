@@ -12,7 +12,7 @@ public interface CompanyRepository {
 
     Company get(int id);
 
-    void save(Company company);
+    int save(Company company);
 
     void update(Company company);
 

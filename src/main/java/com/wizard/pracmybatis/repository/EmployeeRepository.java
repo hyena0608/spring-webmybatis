@@ -1,6 +1,7 @@
 package com.wizard.pracmybatis.repository;
 
 import com.wizard.pracmybatis.domain.Employee;
+import com.wizard.pracmybatis.dto.EmpComDepDto;
 import com.wizard.pracmybatis.dto.EmployeeCompanyDto;
 import org.springframework.stereotype.Repository;
 
@@ -20,5 +21,9 @@ public interface EmployeeRepository {
     void delete(int id);
 
     List<EmployeeCompanyDto> getEmployeeCompanyList();
+
+    List<EmpComDepDto> getEmpComDepList();
+
+    List<EmpComDepDto> getEmpComDepListByComDep();
 
 }

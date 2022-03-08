@@ -12,6 +12,10 @@ public class EmployeeCompanyDto {
     private String c_name;
     private String c_address;
 
+   public EmployeeCompanyDto() {
+
+   }
+
     public EmployeeCompanyDto(String e_name, String e_address, int c_id, String c_name, String c_address) {
         this.e_name = e_name;
         this.e_address = e_address;

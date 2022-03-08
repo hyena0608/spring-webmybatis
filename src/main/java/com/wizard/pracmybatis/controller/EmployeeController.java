@@ -1,6 +1,7 @@
 package com.wizard.pracmybatis.controller;
 
 import com.wizard.pracmybatis.domain.Employee;
+import com.wizard.pracmybatis.dto.EmpComDepDto;
 import com.wizard.pracmybatis.dto.EmployeeCompanyDto;
 import com.wizard.pracmybatis.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
@@ -43,5 +44,10 @@ public class EmployeeController {
     @GetMapping("/eclist")
     public List<EmployeeCompanyDto> getEmployeeCompanyList() {
         return employeeService.getEmployeeCompanyList();
+    }
+
+    @GetMapping("/ecdlist")
+    public List<EmpComDepDto> getEmpComDepList() {
+        return employeeService.getEmpComDepList();
     }
 }
