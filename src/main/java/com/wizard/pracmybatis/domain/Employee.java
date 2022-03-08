@@ -7,8 +7,8 @@ import lombok.Getter;
 public class Employee {
 
       private int id;
-      private String employee_name;
-      private String employee_address;
+      private String name;
+      private String address;
       private int company_id;
 
 }

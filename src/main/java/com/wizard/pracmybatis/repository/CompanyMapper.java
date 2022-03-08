@@ -8,14 +8,14 @@ import java.util.List;
 @Mapper
 public interface CompanyMapper {
 
-    @Insert("INSERT INTO company(company_name, company_address) VALUES(#{company.name}, #{company.address})")
+    @Insert("INSERT INTO company(name, address) VALUES(#{company.name}, #{company.address})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(@Param("company") Company company);
 
     @Select("SELECT * FROM company")
     @Results(id = "CompanyMap", value = {
-            @Result(property = "name", column = "company_name"),
-            @Result(property = "address", column = "company_address")
+            @Result(property = "name", column = "name"),
+            @Result(property = "address", column = "address")
     })
     List<Company> getAll();
 

@@ -5,8 +5,8 @@
 
     <select id="getList" resultType="Employee">
         SELECT E.id,
-               E.employee_name,
-               E.employee_address,
+               E.name,
+               E.address,
                E.company_id
         FROM employee E
         ORDER BY E.id
@@ -14,23 +14,23 @@
 
     <select id="get" parameterType="int"
             resultType="Employee">
-        SELECT E.ID,
-               E.employee_name,
-               E.emplotee_address,
+        SELECT E.id,
+               E.name,
+               E.address,
                E.company_id
         FROM employee E
         WHERE E.ID = #{e_id}
     </select>
 
     <insert id="save" parameterType="Employee">
-        INSERT INTO employee (employee_name, employee_address, company_id)
-        VALUES (#{employee_name}, #{employee_address}, #{company_id})
+        INSERT INTO employee (name, address, company_id)
+        VALUES (#{name}, #{address}, #{company_id})
     </insert>
 
     <update id="update" parameterType="Employee">
         UPDATE employee
-        SET employee_name = #{employee_name},
-            address       = #{employee_address},
+        SET name = #{name},
+            address       = #{address},
             company_id = #{company_id}
         WHERE id = #{e_id}
     </update>
@@ -42,11 +42,11 @@
     </delete>
 
     <select id="getEmployeeCompanyList" resultType="EmployeeCompanyDto">
-        SELECT E.employee_name,
-               E.employee_address,
+        SELECT E.name,
+               E.address,
                C.id,
-               C.company_name,
-               C.company_address
+               C.name,
+               C.address
         FROM employee E,
              company C
         WHERE E.company_id = C.id
