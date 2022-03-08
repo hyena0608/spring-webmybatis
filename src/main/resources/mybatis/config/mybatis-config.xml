@@ -6,14 +6,22 @@
 <configuration>
 
     <!-- 별칭 -->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
     <typeAliases>
-        <typeAlias type="com.wizard.pracmybatis.domain.Board" alias="Board"/>
+<!--        <typeAlias type="com.wizard.pracmybatis.domain.Board" alias="Board"/>-->
         <typeAlias type="com.wizard.pracmybatis.domain.Employee" alias="Employee"/>
         <typeAlias type="com.wizard.pracmybatis.domain.Company" alias="Company"/>
         <typeAlias type="com.wizard.pracmybatis.domain.Department" alias="Department"/>
+        <typeAlias type="com.wizard.pracmybatis.domain.Rank" alias="Rank"/>
         <typeAlias type="com.wizard.pracmybatis.dto.EmployeeCompanyDto" alias="EmployeeCompanyDto"/>
         <typeAlias type="com.wizard.pracmybatis.dto.EmpComDepDto" alias="EmpComDepDto"/>
-
     </typeAliases>
+
+<!--    <typeHandlers>-->
+<!--        <typeHandler handler="com.sample.mybatis.enums.UserType$TypeHandler"/>-->
+<!--    </typeHandlers>-->
 
 </configuration>

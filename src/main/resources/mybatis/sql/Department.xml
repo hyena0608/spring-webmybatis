@@ -6,8 +6,7 @@
     <select id="getList" resultType="Department">
         SELECT d.id,
                d.name,
-               d.address,
-               d.intro,
+               d.type,
                d.company_id,
         FROM department d
         ORDER BY d.id
@@ -17,24 +16,22 @@
             resultType="Department">
         SELECT d.id,
                d.name,
-               d.address,
-               d.intro,
+               d.type,
                d.company_id,
         FROM department d
         WHERE d.id = #{id}
     </select>
 
     <insert id="save" parameterType="Department" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO department (name, address, intro, company_id)
-        VALUES (#{name}, #{address}, #{intro}, #{company_id})
+        INSERT INTO department (name, type, company_id)
+        VALUES (#{name}, #{type}, #{company_id})
         RETURNING id;
     </insert>
 
     <update id="update" parameterType="Department">
         UPDATE department
         SET name          = #{name},
-            address       = #{address},
-            intro         = #{intro},
+            type       = #{type},
             company_id    = #{company_id},
         WHERE id = #{id}
     </update>

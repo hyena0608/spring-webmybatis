@@ -3,15 +3,14 @@ package com.wizard.pracmybatis.domain;
 import lombok.Getter;
 
 @Getter
-public class Company {
+public class Rank {
+
     private int id;
-    private String name;
     private String type;
 
-    private Company() {}
+    private Rank() {}
 
-    public Company(String name, Enum type) {
-        this.name = name;
+    public Rank(Enum type) {
         this.type = String.valueOf(type);
     }
 }

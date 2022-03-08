@@ -6,9 +6,11 @@
     <select id="getList" resultType="Employee">
         SELECT E.id,
                E.name,
-               E.address,
+               E.work_year,
+               E.first_salary,
                E.company_id,
-               E.department_id
+               E.department_id,
+               E.rank_id
         FROM employee E
         ORDER BY E.id
     </select>
@@ -17,24 +19,28 @@
             resultType="Employee">
         SELECT E.id,
                E.name,
-               E.address,
+               E.first_salary,
+               E.work_year,
                E.company_id,
-               E.department_id
+               E.department_id,
+               E.rank_id
         FROM employee E
         WHERE E.ID = #{e_id}
     </select>
 
     <insert id="save" parameterType="Employee" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO employee (name, address, company_id, department_id)
-        VALUES (#{name}, #{address}, #{company_id}, #{department_id}) RETURNING id;
+        INSERT INTO employee (name, work_year, first_salary, company_id, department_id, rank_id)
+        VALUES (#{name}, #{work_year}, #{first_salary}, #{company_id}, #{department_id}, #{rank_id}) RETURNING id;
     </insert>
 
     <update id="update" parameterType="Employee">
         UPDATE employee
         SET name          = #{name},
-            address       = #{address},
+            work_year     = #{work_year},
+            first_salary  = #{first_salary},
             company_id    = #{company_id},
-            department_id = #{department_id}
+            department_id = #{department_id},
+            rank_id       = #{rank_id}
         WHERE id = #{e_id}
     </update>
 
@@ -44,49 +50,49 @@
         WHERE ID = #{e_id}
     </delete>
 
-    <select id="getEmployeeCompanyList" resultType="EmployeeCompanyDto">
-        SELECT E.name    e_name,
-               E.address e_address,
-               C.id      c_id,
-               C.name    c_name,
-               C.address c_address
-        FROM employee E,
-             company C
-        WHERE E.company_id = C.id
-    </select>
+    <!--    <select id="getEmployeeCompanyList" resultType="EmployeeCompanyDto">-->
+    <!--        SELECT E.name    e_name,-->
+    <!--               E.address e_address,-->
+    <!--               C.id      c_id,-->
+    <!--               C.name    c_name,-->
+    <!--               C.address c_address-->
+    <!--        FROM employee E,-->
+    <!--             company C-->
+    <!--        WHERE E.company_id = C.id-->
+    <!--    </select>-->
 
-    <select id="getEmpComDepList" resultType="EmpComDepDto">
-        SELECT e.name    e_name,
-               e.address e_address,
-               c.id      c_id,
-               c.name    c_name,
-               c.address c_address,
-               d.id      d_id,
-               d.name    d_name,
-               d.address d_address,
-               d.intro   d_intro
-        FROM employee e
-                 JOIN company c ON e.company_id = c.id
-                 JOIN department d ON e.department_id = d.id
-    </select>
+    <!--    <select id="getEmpComDepList" resultType="EmpComDepDto">-->
+    <!--        SELECT e.name    e_name,-->
+    <!--               e.address e_address,-->
+    <!--               c.id      c_id,-->
+    <!--               c.name    c_name,-->
+    <!--               c.address c_address,-->
+    <!--               d.id      d_id,-->
+    <!--               d.name    d_name,-->
+    <!--               d.address d_address,-->
+    <!--               d.intro   d_intro-->
+    <!--        FROM employee e-->
+    <!--                 JOIN company c ON e.company_id = c.id-->
+    <!--                 JOIN department d ON e.department_id = d.id-->
+    <!--    </select>-->
 
-    <select id="getEmpComDepListByComDep" resultType="EmpComDepDto" parameterType="java.util.HashMap">
-        SELECT e.name e_name,
-        e.address e_address,
-        c.id c_id,
-        c.name c_name,
-        c.address c_address,
-        d.id d_id,
-        d.name d_name,
-        d.address d_address,
-        d.intro d_intro
-        FROM employee e
-        JOIN company c ON e.company_id = c.id
-        JOIN department d ON e.department_id = d.id
-        <where>
-            <if test="company_name != null">AND c.name = #{company_name}</if>
-            <if test="department_name != null">AND d.name = #{department_name}</if>
-        </where>
-    </select>
+    <!--    <select id="getEmpComDepListByComDep" resultType="EmpComDepDto" parameterType="java.util.HashMap">-->
+    <!--        SELECT e.name e_name,-->
+    <!--        e.address e_address,-->
+    <!--        c.id c_id,-->
+    <!--        c.name c_name,-->
+    <!--        c.address c_address,-->
+    <!--        d.id d_id,-->
+    <!--        d.name d_name,-->
+    <!--        d.address d_address,-->
+    <!--        d.intro d_intro-->
+    <!--        FROM employee e-->
+    <!--        JOIN company c ON e.company_id = c.id-->
+    <!--        JOIN department d ON e.department_id = d.id-->
+    <!--        <where>-->
+    <!--            <if test="company_name != null">AND c.name = #{company_name}</if>-->
+    <!--            <if test="department_name != null">AND d.name = #{department_name}</if>-->
+    <!--        </where>-->
+    <!--    </select>-->
 
 </mapper>
