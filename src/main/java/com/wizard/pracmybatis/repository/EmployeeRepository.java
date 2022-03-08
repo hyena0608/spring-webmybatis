@@ -24,6 +24,6 @@ public interface EmployeeRepository {
 
     List<EmpComDepDto> getEmpComDepList();
 
-    List<EmpComDepDto> getEmpComDepListByComDep();
+    List<EmpComDepDto> getEmpComDepListByComDep(String company_name, String department_name);
 
 }

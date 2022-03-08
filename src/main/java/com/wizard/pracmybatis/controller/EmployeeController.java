@@ -5,6 +5,7 @@ import com.wizard.pracmybatis.dto.EmpComDepDto;
 import com.wizard.pracmybatis.dto.EmployeeCompanyDto;
 import com.wizard.pracmybatis.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,5 +50,10 @@ public class EmployeeController {
     @GetMapping("/ecdlist")
     public List<EmpComDepDto> getEmpComDepList() {
         return employeeService.getEmpComDepList();
+    }
+
+    @GetMapping("/edclist/search")
+    public List<EmpComDepDto> getEmpComDepListByComDep(@Nullable String company_name, @Nullable String department_name) {
+        return employeeService.getEmpComDepListByComDep(company_name, department_name);
     }
 }

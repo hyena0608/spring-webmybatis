@@ -26,15 +26,14 @@
 
     <insert id="save" parameterType="Employee" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO employee (name, address, company_id, department_id)
-        VALUES (#{name}, #{address}, #{company_id}, #{department_id})
-        RETURNING id;
+        VALUES (#{name}, #{address}, #{company_id}, #{department_id}) RETURNING id;
     </insert>
 
     <update id="update" parameterType="Employee">
         UPDATE employee
-        SET name = #{name},
+        SET name          = #{name},
             address       = #{address},
-            company_id = #{company_id},
+            company_id    = #{company_id},
             department_id = #{department_id}
         WHERE id = #{e_id}
     </update>
@@ -46,10 +45,10 @@
     </delete>
 
     <select id="getEmployeeCompanyList" resultType="EmployeeCompanyDto">
-        SELECT E.name e_name,
+        SELECT E.name    e_name,
                E.address e_address,
-               C.id c_id,
-               C.name c_name,
+               C.id      c_id,
+               C.name    c_name,
                C.address c_address
         FROM employee E,
              company C
@@ -57,18 +56,37 @@
     </select>
 
     <select id="getEmpComDepList" resultType="EmpComDepDto">
-        SELECT e.name e_name,
+        SELECT e.name    e_name,
                e.address e_address,
-               c.id c_id,
-               c.name c_name,
+               c.id      c_id,
+               c.name    c_name,
                c.address c_address,
-               d.id d_id,
-               d.name d_name,
+               d.id      d_id,
+               d.name    d_name,
                d.address d_address,
-               d.intro d_intro
+               d.intro   d_intro
+        FROM employee e
+                 JOIN company c ON e.company_id = c.id
+                 JOIN department d ON e.department_id = d.id
+    </select>
+
+    <select id="getEmpComDepListByComDep" resultType="EmpComDepDto" parameterType="java.util.HashMap">
+        SELECT e.name e_name,
+        e.address e_address,
+        c.id c_id,
+        c.name c_name,
+        c.address c_address,
+        d.id d_id,
+        d.name d_name,
+        d.address d_address,
+        d.intro d_intro
         FROM employee e
         JOIN company c ON e.company_id = c.id
         JOIN department d ON e.department_id = d.id
+        <where>
+            <if test="company_name != null">AND c.name = #{company_name}</if>
+            <if test="department_name != null">AND d.name = #{department_name}</if>
+        </where>
     </select>
 
 </mapper>

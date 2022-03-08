@@ -42,4 +42,8 @@ public class EmployeeService {
     public List<EmpComDepDto> getEmpComDepList() {
         return employeeRepository.getEmpComDepList();
     }
+
+    public List<EmpComDepDto> getEmpComDepListByComDep(String company_name, String department_name) {
+        return employeeRepository.getEmpComDepListByComDep(company_name, department_name);
+    }
 }
