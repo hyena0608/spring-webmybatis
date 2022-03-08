@@ -1,7 +1,7 @@
 package com.wizard.pracmybatis.controller;
 
 import com.wizard.pracmybatis.domain.Employee;
-import com.wizard.pracmybatis.domain.EmployeeCompanyDto;
+import com.wizard.pracmybatis.dto.EmployeeCompanyDto;
 import com.wizard.pracmybatis.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

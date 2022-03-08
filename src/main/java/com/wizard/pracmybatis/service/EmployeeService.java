@@ -1,7 +1,7 @@
 package com.wizard.pracmybatis.service;
 
 import com.wizard.pracmybatis.domain.Employee;
-import com.wizard.pracmybatis.domain.EmployeeCompanyDto;
+import com.wizard.pracmybatis.dto.EmployeeCompanyDto;
 import com.wizard.pracmybatis.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

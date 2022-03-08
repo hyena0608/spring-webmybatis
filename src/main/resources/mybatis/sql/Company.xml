@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wizard.pracmybatis.repository.CompanyRepository">
+
+    <select id="getList" resultType="Company">
+        SELECT c.id,
+               c.name,
+               c.address,
+        FROM company c
+        ORDER BY c.id
+    </select>
+
+    <select id="get" parameterType="int" resultType="Company">
+        SELECT c.id,
+               c.name,
+               c.address,
+        FROM company c
+        WHERE c.id = #{id}
+    </select>
+
+    <insert id="save" parameterType="Company">
+        INSERT INTO company (name, address)
+        VALUES (#{name}, #{address})
+    </insert>
+
+    <update id="update" parameterType="Company">
+        UPDATE company
+        SET name       = #{name},
+            address    = #{address},
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM company
+        WHERE ID = #{id}
+    </delete>
+
+</mapper>

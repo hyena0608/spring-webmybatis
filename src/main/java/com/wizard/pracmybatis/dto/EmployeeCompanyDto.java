@@ -1,8 +1,9 @@
-package com.wizard.pracmybatis.domain;
+package com.wizard.pracmybatis.dto;
 
 import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 public class EmployeeCompanyDto {
 
     private String e_name;

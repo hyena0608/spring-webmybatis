@@ -1,17 +1,19 @@
 package com.wizard.pracmybatis.domain;
 
-import lombok.Data;
 import lombok.Getter;
 
 @Getter
-public class Company {
+public class Department {
+
     private int id;
     private String name;
     private String address;
+    private String intro;
 
-    public Company(int id, String name, String address) {
+    public Department(int id, String name, String address, String intro) {
         this.id = id;
         this.name = name;
         this.address = address;
+        this.intro = intro;
     }
 }

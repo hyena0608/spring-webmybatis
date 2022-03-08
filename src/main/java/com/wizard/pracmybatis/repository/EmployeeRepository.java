@@ -1,7 +1,7 @@
 package com.wizard.pracmybatis.repository;
 
 import com.wizard.pracmybatis.domain.Employee;
-import com.wizard.pracmybatis.domain.EmployeeCompanyDto;
+import com.wizard.pracmybatis.dto.EmployeeCompanyDto;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

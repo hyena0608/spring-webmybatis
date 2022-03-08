@@ -10,7 +10,7 @@
         <typeAlias type="com.wizard.pracmybatis.domain.Board" alias="Board"/>
         <typeAlias type="com.wizard.pracmybatis.domain.Employee" alias="Employee"/>
         <typeAlias type="com.wizard.pracmybatis.domain.Company" alias="Company"/>
-        <typeAlias type="com.wizard.pracmybatis.domain.EmployeeCompanyDto" alias="EmployeeCompanyDto"/>
+        <typeAlias type="com.wizard.pracmybatis.dto.EmployeeCompanyDto" alias="EmployeeCompanyDto"/>
 
     </typeAliases>
 
